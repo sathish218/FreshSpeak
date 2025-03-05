@@ -1,25 +1,42 @@
-import React from 'react'
-import './App.css'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Home, FileText, Info,CalendarCheck,BarChart } from 'lucide-react';
+import './App.css'; // Use a separate CSS file
+import freshworksLogo from './assets/images/freshworks.png';
 
+const navItems = [
+  { icon: <Home size={24} />, label: 'Dashboard', description: 'View your main dashboard and analytics' },
+  { icon: <FileText size={24} />, label: 'Records', description: 'Manage user accounts and permissions' },
+  { icon: <Info size={24} />, label: 'About', description: 'Check your inbox and communications' },
+  { icon: <CalendarCheck size={24} />, label: 'Meetings', description: 'Configure your application settings' },
+  {icon:<BarChart size={24}/>, label:'Analytics',description:'To give the data ofAnalytics '}
+];
 
-function Aside(){
-    return(
-        <aside className='aside-section'>
-        <div>
-         <h2 style={{textAlign:"center", padding:"10px"}}>MENU</h2>
-        </div>
-        <div className='aside-section-h3' style={{display:"flex", flexDirection:"column",textAlign:"center", gap:"30px", margin:"10px", color:"white"}}>
-        <Link to={""}>
-         <h3>Home</h3>
-         </Link>
-         <Link>
-         <h3>ABOUT</h3>
-         </Link>
-         <h3>MEET-UP</h3>
-        </div>
-      </aside>
-    )
+function Aside() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div 
+      className={`sidebar ${isExpanded ? 'expanded' : ''}`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
+      {/* Logo Section */}
+      <div className="logo-container">
+        <img className="logo-image" src={freshworksLogo} alt="Freshspeak Logo" />
+        {isExpanded && <span className="logo-text">Freshspeak</span>}
+      </div>
+
+      {/* Navigation Menu */}
+      <nav className="nav">
+        {navItems.map((item, index) => (
+          <button key={index} className="nav-item">
+            <span className="icon">{item.icon}</span>
+            {isExpanded && <div className="nav-text">{item.label}</div>}
+          </button>
+        ))}
+      </nav>
+    </div>
+  );
 }
+
 export default Aside;
- 

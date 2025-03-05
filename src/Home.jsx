@@ -1,50 +1,53 @@
 import React from 'react'
 import './App.css'
-import Image2 from './assets/images/meeting.svg';
-import Image3 from './assets/images/join.svg';
-import Image4 from './assets/images/file.svg';
 import { Link } from 'react-router-dom';
+import Image from './assets/images/meeting-section.jpg';
+import Image1 from './assets/images/createmeeting.png';
+import Image2 from './assets/images/joinmeeting.jpg';
+
+
+
 
 
 function Home(){
     return(
       <section>
-        <main className='container-section'>
-        <section className='main-section'>
-          {/* this is the aside section  */}
-          
-          <div className='Containers'>
-          <Link to={"form"}>
-            <div >
-              <h3> Create Meeting</h3>
-              <img src={Image2} style={{height:"50px"}}/>
+        <section className='content-container'>
+        <div  className='intro-section' style={{display:"flex"}}>
+          <div>
+            <h3 className='intro-h3' style={{fontSize:"60px"}}>Welcome!</h3><h2 style={{fontSize:"40px", color:"white"}}>Feel Free To Ask Any Questions </h2>
             </div>
-            </Link>
-
-            <Link to={"join"}>
-            <div>
-              
-              <h3>JOIN</h3>
-            
-              <img src={Image3} style={{height:"50px", alignItems:"center"}} />
-            </div>
-            </Link>
-
-            <div>
-              <h3>RECORDS</h3>
-              <img src={Image4} style={{height:"50px"}}/>
-            </div>
+          <div>
+            <img src={Image} style={{height:"500px", width:"700px"}}/>
           </div>
-  
+        </div>
+         
+
+         {/* Create Meeting section */}
+         <div className='create-meeting'>
+         <div>
+          <img src={Image1} style={{height:"700px", width:"800px"}}/>
+         </div>
+         <div>
+          <h3>Ready to start? Create your meeting now and let FreshSpeak help you engage your participants with seamless Q&A!</h3>
+          <p id='create-button'>Create Meeting</p>
+         </div>
+         </div>
+
+         {/* Join the Meeting */}
+
+         <div className='join-meeting'>
+         <div>
+         <h3>Join the meeting now and get involved—ask questions and engage in the discussion with FreshSpeak!</h3>
+         <p id='join-button'>Join Meeting</p>
+         </div>
+         <div>
           
-  
-  
-          {/* this is the container section */}
-          <div className='container-section'>
-  
-          </div>
-        </section>
-      </main>
+          <img src={Image2} style={{height:"700px", width:"800px"}}/>
+         </div>
+         </div>
+        
+      </section>
       </section>
     )
 }
